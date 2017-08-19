@@ -78,13 +78,6 @@ def display_checked_list(checkedlist):
 	if choice == 'y':
 		display_main_menu()
 
-
-
-
-
-
-
-
 ######### Main program #########
 
 def main():
@@ -100,14 +93,6 @@ def main():
 			display_checked_list(tasks)
 		elif choice == '0':
 			break
-
-
-
-
-
-
-
-
 
 def testmain():
 	#testing the script ---------------------------------------------------------#
@@ -156,8 +141,6 @@ def testmain():
 	print(list2.get_list())
 	print()
 	print(list2.get_archive())
-
-
 
 if __name__ == '__main__':
 	#testmain()
