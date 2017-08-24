@@ -12,9 +12,7 @@ class Project:
 		return self.tasks
 
 
-		#TODO : LINK THE PROJECT WITH THE TODOLIST
-		#TODO : Make a CLI UI
-		#TODO : learn about reminders(time alarm .....etc)
+		#TODO : Add reminders(time alarm, notifactions .....etc)
 
 class ToDoList(object):
 	def __init__(self, tasks_caption):
