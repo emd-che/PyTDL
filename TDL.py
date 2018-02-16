@@ -47,7 +47,7 @@ def displaying_list(list1):
 		print('-' * 50)
 
 def display_main_menu():
-	os.system('clear') #TODO:replace it with portable cmnd in the os lib if exists.
+	os.system('clear') #TODO:replace it with portable cmd in the os lib if exists.
 	print("-"*15 + "Hello in todo list. Wish for u a gd luck :^)" + "-"*15)
 	print('The main menu :  ')
 	print('\t1:Add item to the current list.')
@@ -79,8 +79,8 @@ def display_checked_list(checkedlist):
 ######### Main program #########
 
 def main():
+	tasks = ToDoList('Test tasks')
 	while True:
-		tasks = ToDoList('Test tasks')
 		choice = display_main_menu()
 		if choice == '1':
 			item = input('Enter the item : ')
