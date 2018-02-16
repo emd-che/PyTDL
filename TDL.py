@@ -11,7 +11,7 @@ class Project:
 	def get_tasks(self):
 		return self.tasks
 
-		#TODO: fix the bug  when try to list tasks
+
 		#TODO : Add reminders(time alarm, notifactions .....etc)
 
 class ToDoList(object):
