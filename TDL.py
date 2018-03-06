@@ -47,7 +47,7 @@ def displaying_list(list1):
 		print('-' * 50)
 
 def display_main_menu():
-	os.system('clear') #TODO:replace it with portable cmd in the os lib if exists.
+	os.system('clear || cls')
 	print("-"*15 + "Hello in todo list. Wish for u a gd luck :^)" + "-"*15)
 	print('The main menu :  ')
 	print('\t1:Add item to the current list.')
@@ -59,7 +59,7 @@ def display_main_menu():
 	return choice
 
 def display_current_list(current_list):
-	os.system('clear') #TODO:replace it with portable cmnd in the os lib if exists.
+	os.system('cls||clear') 
 	print('The current list: ')
 	displaying_list(current_list.get_list())
 	print()
@@ -67,7 +67,7 @@ def display_current_list(current_list):
 	choice = input('c : Check\t q: Quit : ').lower()
 
 def display_checked_list(checkedlist):
-	os.system('clear') #TODO:replace it with portable cmnd in the os lib if exists.
+	os.system('cls||clear') 
 	print('The checked list: ')
 	displaying_list(checkedlist.get_archive())
 	print()
