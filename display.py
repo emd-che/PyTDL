@@ -21,8 +21,7 @@ def display_main_menu():
 
 def display_current_list(current_list):
 	#os.system('cls||clear') 
-	current_list_str = '''The current list: ')\n
-	''' + displaying_list(current_list.get_list()) + '\n\n'
+	current_list_str = 'The current list: \n\n'  + displaying_list(current_list.get_list()) + '\n\n'
 	#choice = input('c : Check\t q: Quit : ').lower()
 	return current_list_str
 
