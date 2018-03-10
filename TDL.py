@@ -1,7 +1,7 @@
 import time
 import pickle
 import os
-
+import display
 
 class Project:
 	def __init__(self, name):
@@ -41,55 +41,35 @@ def load(f):
 	return c
 
 #########  Menus #########
-def displaying_list(list1):
-	for i in range(len(list1)):
-		print(str(i) + ' : ' + list1[i])
-		print('-' * 50)
 
-def display_main_menu():
-	os.system('clear || cls')
-	print("-"*15 + "Hello in todo list. Wish for u a gd luck :^)" + "-"*15)
-	print('The main menu :  ')
-	print('\t1:Add item to the current list.')
-	print('\t2:Show the current list.')
-	print('\t3:Show checked list.')
-	print('\t0:Quit.')
-	print()
-	choice = input('Enter your choice : ')
-	return choice
 
-def display_current_list(current_list):
-	os.system('cls||clear') 
-	print('The current list: ')
-	displaying_list(current_list.get_list())
-	print()
-	print()
-	choice = input('c : Check\t q: Quit : ').lower()
 
-def display_checked_list(checkedlist):
-	os.system('cls||clear') 
-	print('The checked list: ')
-	displaying_list(checkedlist.get_archive())
-	print()
-	print()
-	choice = input('Quit ? (y/n) : ')
-	if choice == 'y':
-		display_main_menu()
 
 ######### Main program #########
 
 def main():
 	tasks = ToDoList('Test tasks')
 	while True:
-		choice = display_main_menu()
+		os.system('clear || cls')
+		print(display.display_main_menu())
+		choice = input('Enter your choice :')
 		if choice == '1':
 			item = input('Enter the item : ')
 			tasks.add(item)
 		elif choice == '2':
-			display_current_list(tasks)
+			os.system('clear || cls')
+			print(display.display_current_list(tasks))
+			current_list_choice = input('c : Check\t q: Quit : ').lower()
+			if current_list_choice == 'q':
+				continue
 		elif choice == '3':
-			display_checked_list(tasks)
+			os.system('clear || cls')
+			print(display.display_checked_list(tasks))
+			checked_list_choice = input('Quit ? (y/n) : ')
+			if checked_list_choice == 'y':
+				continue
 		elif choice == '0':
+			os.system('clear || cls')
 			break
 
 def testmain():
