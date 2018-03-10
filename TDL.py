@@ -60,7 +60,10 @@ def main():
 			os.system('clear || cls')
 			print(display.display_current_list(tasks))
 			current_list_choice = input('c : Check\t q: Quit : ').lower()
-			if current_list_choice == 'q':
+			if current_list_choice == 'c':
+				checked = int(input("enter the task number: "))
+				tasks.check(checked)
+			elif current_list_choice == 'q':
 				continue
 		elif choice == '3':
 			os.system('clear || cls')
