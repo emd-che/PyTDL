@@ -40,10 +40,6 @@ def load(f):
 	c = pickle.load(f)
 	return c
 
-#########  Menus #########
-
-
-
 
 ######### Main program #########
 
