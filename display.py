@@ -6,7 +6,7 @@ def displaying_list(list1):
 	return list_str 
 
 def display_main_menu():
-	main_menu_str = "-"*15 + "Hello in todo list. Wish for u a gd luck :^)" + "-"*15 +'''\n 
+	main_menu_str = "-"*15 + "Hello in todo list. Wish for you a good luck! :)" + "-"*15 +'''\n 
 	The main menu :  \n
 	\t1:Add item to the current list.\n
 	\t2:Show the current list.\n
