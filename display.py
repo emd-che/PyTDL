@@ -21,7 +21,7 @@ def display_main_menu():
 def display_current_list(current_list):
 	current_list_str = 'The current list: \n\n'  + displaying_list(current_list.get_list()) + '\n\n'
 	return current_list_str
-
+	#return displaying_list(current_list.get_list())
 
 def display_checked_list(checkedlist):
 	checked_list_str = '''The checked list: ') \n

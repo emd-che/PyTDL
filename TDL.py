@@ -2,7 +2,7 @@ import time
 import pickle
 import os
 import display
-
+from task import Task
 class Project:
 	def __init__(self, name):
 		self.name = name
@@ -14,7 +14,7 @@ class Project:
 
 		#TODO : Add reminders(time alarm, notifactions .....etc)
 
-class ToDoList(object):
+class ToDoList:
 	def __init__(self, tasks_caption):
 		self.tasks_caption = tasks_caption
 		self.list = []
@@ -36,6 +36,9 @@ class ToDoList(object):
 	def get_archive(self):
 		return self.oldlist
 
+
+
+
 def load(f):
 	c = pickle.load(f)
 	return c
@@ -50,8 +53,10 @@ def main():
 		print(display.display_main_menu())
 		choice = input('Enter your choice :')
 		if choice == '1':
-			item = input('Enter the item : ')
-			tasks.add(item)
+			title = input('Enter the task\'s title : ')
+			desc = input('Enter the tasks\'s description: ')
+			item = Task(title, desc)
+			tasks.add(str(item))
 		elif choice == '2':
 			os.system('clear || cls')
 			print(display.display_current_list(tasks))
