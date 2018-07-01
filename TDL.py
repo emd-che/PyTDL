@@ -1,8 +1,8 @@
 import time
 import pickle
 import os
-import display
 from task import Task
+
 class Project:
 	def __init__(self, name):
 		self.name = name
@@ -17,27 +17,45 @@ class Project:
 class ToDoList:
 	def __init__(self, tasks_caption):
 		self.tasks_caption = tasks_caption
-		self.list = []
-		self.oldlist = []
-
+		self.lst = [] #lst -> list
+		self.oldlst = []
+		self.display_func = lambda lst: "".join([str(i) + ' : ' + lst[i] + '\n' + ('-' * 50) + '\n' for i in range(len(lst))])
 	def add(self, item):
-		self.list.append(item)
+		self.lst.append(item)
 
 	def save(self, f):
 		pickle.dump(self, f)
 
 	def get_list(self):
-		return self.list
+		return self.lst
 
 	def check(self, choice):
-		self.oldlist.append( self.list[choice]+ '      ' +time.ctime() )
-		del self.list[choice]
+		self.oldlst.append( self.lst[choice]+ '      ' +time.ctime() )
+		del self.lst[choice]
 
 	def get_archive(self):
-		return self.oldlist
+		return self.oldlst
 
 
+	def display_current_list(self):
+		current_list_str = 'The current list: \n\n'  + self.display_func(self.get_list()) + '\n\n'
+		return current_list_str
 
+	def display_checked_list(self):
+		checked_list_str = 'The checked list: \') \n' + self.display_func(self.get_archive()) + '\n\n'
+		return checked_list_str
+		
+
+
+def display_main_menu():
+	main_menu_str = "-"*15 + "Hello in pyTDL. Wish for you a good luck! :)" + "-"*15 +'''\n 
+	The main menu :  \n
+	\t1:Add item to the current list.\n
+	\t2:Show the current list.\n
+	\t3:Show checked list.\n
+	\t0:Quit.\n
+	'''
+	return main_menu_str
 
 def load(f):
 	c = pickle.load(f)
@@ -50,7 +68,7 @@ def main():
 	tasks = ToDoList('Test tasks')
 	while True:
 		os.system('clear || cls')
-		print(display.display_main_menu())
+		print(display_main_menu())
 		choice = input('Enter your choice :')
 		if choice == '1':
 			title = input('Enter the task\'s title : ')
@@ -59,7 +77,8 @@ def main():
 			tasks.add(str(item))
 		elif choice == '2':
 			os.system('clear || cls')
-			print(display.display_current_list(tasks))
+			#print(display.display_current_list(tasks))
+			print(tasks.display_current_list())
 			current_list_choice = input('c : Check\t q: Quit : ').lower()
 			if current_list_choice == 'c':
 				checked = int(input("enter the task number: "))
@@ -68,7 +87,7 @@ def main():
 				continue
 		elif choice == '3':
 			os.system('clear || cls')
-			print(display.display_checked_list(tasks))
+			print(tasks.display_checked_list())
 			checked_list_choice = input('Quit ? (y/n) : ')
 			if checked_list_choice == 'y':
 				continue
