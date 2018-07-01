@@ -95,54 +95,5 @@ def main():
 			os.system('clear || cls')
 			break
 
-def testmain():
-	#testing the script ---------------------------------------------------------#
-	test1 = ToDoList('test1')
-	#list1 = ['test1', 'test2', 'test3']
-	test1.add('test1')
-	test1.add('test2')
-	test1.add('test3')
-	print ("The list is : ")
-	print(test1.get_list())
-	print()
-	print("The first elemnet done. ")
-	test1.check(0)
-	print("The list now is :")
-	print(test1.get_list())
-	test1.check(1)
-	print()
-	print("Anther elemet checked.")
-	print("The list now is : ")
-	print(test1.get_list())
-	print()
-	print("The last list(archive) is : ")
-	for i in test1.get_archive():
-	        print (i)
-	        print('-' * 50)
-
-	test1.add('test for the project')
-
-	print()
-	print("Project info: ")
-	p1 = Project("progtestpro1")
-	p1.add_tasks(test1)
-	for tsk in p1.get_tasks():
-		print(tsk)
-	print ('Saving.....')
-	flist1 = open('list1.tdl', 'wb')
-	test1.save(flist1)
-	print('Saved.')
-	flist1.close()
-	print()
-	flist2 = open('list1.tdl', 'rb')
-	print('Loading....')
-	list2 = load(flist2)
-	print('Loaded.')
-	flist2.close()
-	print(list2.get_list())
-	print()
-	print(list2.get_archive())
-
 if __name__ == '__main__':
-	#testmain()
 	main()
