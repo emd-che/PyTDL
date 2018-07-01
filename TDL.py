@@ -4,6 +4,7 @@ import os
 from task import Task
 
 class Project:
+	'''this class is gonna be implemented later'''
 	def __init__(self, name):
 		self.name = name
 	def add_tasks(self, tasks):
@@ -15,9 +16,13 @@ class Project:
 		#TODO : Add reminders(time alarm, notifactions .....etc)
 
 class ToDoList:
+	'''this class is for the to do list tasks,
+	 it contains a list (lst) for the new added tasks,
+	 and another list for the checked tasks (oldlst), 
+	 and a lambda function to display the task with a separator and a line number'''
 	def __init__(self, tasks_caption):
 		self.tasks_caption = tasks_caption
-		self.lst = [] #lst -> list
+		self.lst = [] 
 		self.oldlst = []
 		self.display_func = lambda lst: "".join([str(i) + ' : ' + lst[i] + '\n' + ('-' * 50) + '\n' for i in range(len(lst))])
 	def add(self, item):
@@ -45,7 +50,10 @@ class ToDoList:
 		checked_list_str = 'The checked list: \') \n' + self.display_func(self.get_archive()) + '\n\n'
 		return checked_list_str
 		
-
+def load(f):
+	'''this function takes a file object and return a ToDoList object'''
+	c = pickle.load(f)
+	return c
 
 def display_main_menu():
 	main_menu_str = "-"*15 + "Hello in pyTDL. Wish for you a good luck! :)" + "-"*15 +'''\n 
@@ -57,14 +65,13 @@ def display_main_menu():
 	'''
 	return main_menu_str
 
-def load(f):
-	c = pickle.load(f)
-	return c
+
 
 
 ######### Main program #########
 
 def main():
+	'''this function is just for testing the functionality of ToDoList class'''
 	tasks = ToDoList('Test tasks')
 	while True:
 		os.system('clear || cls')
