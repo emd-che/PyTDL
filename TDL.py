@@ -29,6 +29,7 @@ class ToDoList:
 		self.lst.append(item)
 
 	def save(self, f):
+		#change this to somthing else.
 		pickle.dump(self, f)
 
 	def get_list(self):
@@ -61,6 +62,7 @@ def display_main_menu():
 	\t1:Add item to the current list.\n
 	\t2:Show the current list.\n
 	\t3:Show checked list.\n
+	\t4:Save list.\n #not working yet.
 	\t0:Quit.\n
 	'''
 	return main_menu_str
@@ -72,7 +74,11 @@ def display_main_menu():
 
 def main():
 	'''this function is just for testing the functionality of ToDoList class'''
-	tasks = ToDoList('Test tasks')
+	if os.path.exists("lst.tdl"): #saving is not working yet.
+		with open("lst.tdl") as f:
+			tasks = load(f)
+	else:
+		tasks = ToDoList('Test tasks')
 	while True:
 		os.system('clear || cls')
 		print(display_main_menu())
@@ -98,6 +104,11 @@ def main():
 			checked_list_choice = input('Quit ? (y/n) : ')
 			if checked_list_choice == 'y':
 				continue
+		elif choice == '4': #doesn't work yet, I think because it vouldn't save the lambda func i don't know why!. 
+			#os.system('clear || cls')
+			#with open("lst.tdl", 'wb') as f:
+			#	tasks.save(f)
+			continue
 		elif choice == '0':
 			os.system('clear || cls')
 			break
