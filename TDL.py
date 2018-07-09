@@ -1,6 +1,7 @@
 import time
 import pickle
 import os
+import dill
 from task import Task
 
 class Project:
@@ -19,7 +20,9 @@ class ToDoList:
 	'''this class is for the to do list tasks,
 	 it contains a list (lst) for the new added tasks,
 	 and another list for the checked tasks (oldlst), 
-	 and a lambda function to display the task with a separator and a line number'''
+	 and a lambda function to display the task with a separator and a line number
+	 this lambda function can be changed with an extention python file'''
+	#TODO: add extention python file
 	def __init__(self, tasks_caption):
 		self.tasks_caption = tasks_caption
 		self.lst = [] 
@@ -30,7 +33,7 @@ class ToDoList:
 
 	def save(self, f):
 		#change this to somthing else.
-		pickle.dump(self, f)
+		dill.dump(self, f)
 
 	def get_list(self):
 		return self.lst
@@ -53,7 +56,7 @@ class ToDoList:
 		
 def load(f):
 	'''this function takes a file object and return a ToDoList object'''
-	c = pickle.load(f)
+	c = dill.temp.load(f)
 	return c
 
 def display_main_menu():
@@ -62,7 +65,7 @@ def display_main_menu():
 	\t1:Add item to the current list.\n
 	\t2:Show the current list.\n
 	\t3:Show checked list.\n
-	\t4:Save list.\n #not working yet.
+	\t4:Save list.\n 
 	\t0:Quit.\n
 	'''
 	return main_menu_str
@@ -90,7 +93,6 @@ def main():
 			tasks.add(str(item))
 		elif choice == '2':
 			os.system('clear || cls')
-			#print(display.display_current_list(tasks))
 			print(tasks.display_current_list())
 			current_list_choice = input('c : Check\t q: Quit : ').lower()
 			if current_list_choice == 'c':
@@ -104,10 +106,10 @@ def main():
 			checked_list_choice = input('Quit ? (y/n) : ')
 			if checked_list_choice == 'y':
 				continue
-		elif choice == '4': #doesn't work yet, I think because it vouldn't save the lambda func i don't know why!. 
-			#os.system('clear || cls')
-			#with open("lst.tdl", 'wb') as f:
-			#	tasks.save(f)
+		elif choice == '4':
+			os.system('clear || cls')
+			with open("lst.tdl", 'wb') as f:
+				tasks.save(f)
 			continue
 		elif choice == '0':
 			os.system('clear || cls')
