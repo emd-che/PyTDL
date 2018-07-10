@@ -2,7 +2,7 @@ import time
 import pickle
 import os
 import dill
-from task import Task
+
 
 class Project:
 	'''this class is gonna be implemented later'''
@@ -15,6 +15,15 @@ class Project:
 
 
 		#TODO : Add reminders(time alarm, notifactions .....etc)
+class Task:
+	def __init__(self, caption, desc):
+		self.caption = caption
+		self.desc = desc
+
+	def __str__(self):
+		return "\"{}\"  :\n\t{}".format(self.caption, self.desc)
+
+
 
 class ToDoList:
 	'''this class is for the to do list tasks,
