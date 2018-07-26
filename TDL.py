@@ -3,7 +3,6 @@ import pickle
 import os
 
 
-
 class Project:
 	'''this class is gonna be implemented later'''
 	def __init__(self, name):
@@ -24,12 +23,10 @@ class Task:
 		return "\"{}\"  :\n\t{}".format(self.caption, self.desc)
 
 
-
 class ToDoList:
 	'''this class is for the to do list tasks,
 	 it contains a list (lst) for the new added tasks,
-	 and another list for the checked tasks (oldlst), 
-	 and a lambda function to display the task with a separator and a line number
+	 and another list for the checked tasks (oldlst), 	 
 	 '''
 	def __init__(self, tasks_caption):
 		self.tasks_caption = tasks_caption
