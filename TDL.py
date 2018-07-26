@@ -36,13 +36,13 @@ class ToDoList:
 		self.tasks_caption = tasks_caption
 		self.lst = [] 
 		self.oldlst = []
-		self.display_func = lambda lst: "".join([str(i) + ' : ' + lst[i] + '\n' + ('-' * 50) + '\n' for i in range(len(lst))])
+		#self.display_func = lambda lst: "".join([str(i) + ' : ' + lst[i] + '\n' + ('-' * 50) + '\n' for i in range(len(lst))])
 	def add(self, item):
 		self.lst.append(item)
 
 	def save(self, f):
 		#change this to somthing else.
-		dill.dump(self, f)
+		pickle.dump(self, f)
 
 	def get_list(self):
 		return self.lst
@@ -56,16 +56,20 @@ class ToDoList:
 
 
 	def display_current_list(self):
-		current_list_str = 'The current list: \n\n'  + self.display_func(self.get_list()) + '\n\n'
+		current_list_str = 'The current list: \n\n'  + display_list(self.get_list()) + '\n\n'
 		return current_list_str
 
 	def display_checked_list(self):
-		checked_list_str = 'The checked list: \') \n' + self.display_func(self.get_archive()) + '\n\n'
+		checked_list_str = 'The checked list: \') \n' + display_list(self.get_archive()) + '\n\n'
 		return checked_list_str
-		
+
+def display_list(lst):
+        return "".join([str(i) + ' : ' + lst[i] + '\n' + ('-' * 50) + '\n' \
+                        for i in range(len(lst))])
+
 def load(f):
 	'''this function takes a file object and return a ToDoList object'''
-	c = dill.temp.load(f)
+	c = pickle.load(f)
 	return c
 
 def display_main_menu():
@@ -86,9 +90,9 @@ def display_main_menu():
 
 def main():
 	'''this function is just for testing the functionality of ToDoList class'''
-	if os.path.exists("lst.tdl"): #saving is not working yet.
-		with open("lst.tdl") as f:
-			tasks = load(f)
+	if os.path.exists("lst.tdl"): 
+		with open("lst.tdl", 'rb') as f:
+			tasks = pickle.load(f)
 	else:
 		tasks = ToDoList('Test tasks')
 	while True:
