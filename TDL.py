@@ -30,8 +30,7 @@ class ToDoList:
 	 it contains a list (lst) for the new added tasks,
 	 and another list for the checked tasks (oldlst), 
 	 and a lambda function to display the task with a separator and a line number
-	 this lambda function can be changed with an extention python file'''
-	#TODO: add extention python file
+	 '''
 	def __init__(self, tasks_caption):
 		self.tasks_caption = tasks_caption
 		self.lst = [] 
