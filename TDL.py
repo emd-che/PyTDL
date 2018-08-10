@@ -22,7 +22,7 @@ class Task:
 	def __str__(self):
 		return "\"{}\"  :\n\t{}".format(self.caption, self.desc)
 
-
+#TODO: add multi todolists	
 class ToDoList:
 	'''this class is for the to do list tasks,
 	 it contains a list (lst) for the new added tasks,
@@ -35,7 +35,8 @@ class ToDoList:
 		#self.display_func = lambda lst: "".join([str(i) + ' : ' + lst[i] + '\n' + ('-' * 50) + '\n' for i in range(len(lst))])
 	def add(self, item):
 		self.lst.append(item)
-
+	
+	#TODO: Add database support
 	def save(self, f):
 		#change this to somthing else.
 		pickle.dump(self, f)
@@ -84,6 +85,9 @@ def display_main_menu():
 
 ######### Main program #########
 
+
+#TODO: make the code cleaner
+#TODO: Add tests
 def main():
 	'''this function is just for testing the functionality of ToDoList class'''
 	if os.path.exists("lst.tdl"): 
