@@ -26,7 +26,7 @@ class Task:
 class ToDoList:
 	'''this class is for the to do list tasks,
 	 it contains a list (lst) for the new added tasks,
-	 and another list for the checked tasks (oldlst), 	 
+	 and another list for the completed tasks (oldlst), 	 
 	 '''
 	def __init__(self, tasks_caption):
 		self.tasks_caption = tasks_caption
@@ -56,9 +56,9 @@ class ToDoList:
 		current_list_str = 'The current list: \n\n'  + display_list(self.get_list()) + '\n\n'
 		return current_list_str
 
-	def display_checked_list(self):
-		checked_list_str = 'The checked list: \') \n' + display_list(self.get_archive()) + '\n\n'
-		return checked_list_str
+	def display_completed_list(self):
+		completed_list_str = 'The completed list: \') \n' + display_list(self.get_archive()) + '\n\n'
+		return completed_list_str
 
 def display_list(lst):
         return "".join([str(i) + ' : ' + lst[i] + '\n' + ('-' * 50) + '\n' \
@@ -74,7 +74,7 @@ def display_main_menu():
 	The main menu :  \n
 	\t1:Add item to the current list.\n
 	\t2:Show the current list.\n
-	\t3:Show checked list.\n
+	\t3:Show completed list.\n
 	\t4:Save list.\n 
 	\t0:Quit.\n
 	'''
@@ -109,15 +109,15 @@ def main():
 			print(tasks.display_current_list())
 			current_list_choice = input('c : Check\t q: Quit : ').lower()
 			if current_list_choice == 'c':
-				checked = int(input("enter the task number: "))
-				tasks.check(checked)
+				completed = int(input("enter the task number: "))
+				tasks.check(completed)
 			elif current_list_choice == 'q':
 				continue
 		elif choice == '3':
 			os.system('clear || cls')
-			print(tasks.display_checked_list())
-			checked_list_choice = input('Quit ? (y/n) : ')
-			if checked_list_choice == 'y':
+			print(tasks.display_completed_list())
+			completed_list_choice = input('Quit ? (y/n) : ')
+			if completed_list_choice == 'y':
 				continue
 		elif choice == '4':
 			os.system('clear || cls')
